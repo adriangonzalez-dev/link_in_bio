@@ -1,0 +1,21 @@
+---
+interface Props {
+    item:{
+        name: string,
+        link: string
+        isProduct:boolean
+    },
+    id?:string
+    index?: number
+}
+
+const {item:{link,isProduct,name}, id} = Astro.props
+---
+
+        <button class={`font-semibold w-4/5 border-2 p-2 border-gray-700 rounded-md bg-white hover:bg-gray-700 hover:text-white duration-500`} id={id}>
+        {
+            isProduct ? name : <a href={link} class="w-full h-full" target="_blank">{name}</a>
+        }
+        </button>
+
+    

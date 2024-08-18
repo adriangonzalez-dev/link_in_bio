@@ -1,0 +1,47 @@
+---
+let imagesLinks:Array<{name:string, link:string}> = []
+
+for(let i = 1; i <=11; i++){
+    imagesLinks.push({
+        name: `diseño ${i}`,
+        link: `/images/${i}.jpg`
+    })
+}
+
+---
+
+<div class="slider-container flex gap-1">
+    {
+        imagesLinks.reverse().map(item=>{
+            return <a class="slider-item" href={`https://wa.me/1565233919?text=Hola!%20Estoy%20interesad@%20en%20el%20${item.name}`}>
+                        <img src={item.link} alt="" loading="lazy"/>
+                </a>
+        })
+    }
+</div>
+<style>
+    .slider-container{
+        display: flex;
+        
+        height: 100%;
+        width: 100%;
+
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+    }
+
+    .slider-item{
+        flex: 0 0 auto; /* Esto asegura que cada item del slider no se reduzca */
+        width: 100%;
+        height: 100%;
+        scroll-snap-align: center;
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+    }
+    
+    .slider-item img {
+        /* Mantiene la proporción de la imagen */
+        object-fit: cover; /* Rellena el contenedor sin distorsionar la imagen */
+    }
+</style>

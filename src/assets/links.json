@@ -1,0 +1,17 @@
+[
+    {
+        "name":"Instagram",
+        "link":"https://m.instagram.com/agwebstores",
+        "isProduct":false
+    },
+    {
+        "name":"Facebook",
+        "link":"https://m.facebook.com/adrian.gonzalez.731",
+        "isProduct":false
+    },
+    {
+        "name":"Elegí tu diseño!",
+        "link":"https://m.facebook.com",
+        "isProduct":true
+    }
+]

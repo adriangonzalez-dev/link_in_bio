@@ -1,0 +1,54 @@
+---
+  import Layout from "../layouts/Layout.astro"
+  import Avatar from "../components/Avatar.astro"
+  import Button from "../components/Button.astro"
+  import {Facebook,Instagram,Twitter} from "../components/icons"
+  import links from "../assets/links.json"
+  import Modal from "../components/Modal.astro"
+
+  const product = links.find(item=>item.isProduct)
+  const NoProduct = links.filter(item=>!item.isProduct)
+---
+<Layout title="Links in Bio!">
+  <section class="w-4/5 bg-white flex flex-col items-center rounded-xl p-2 relative gap-4">
+    <Avatar/>
+    <article class="mt-20 mb-10 flex flex-col gap-2 w-full items-center">
+      {
+        NoProduct.map((item, index)=><Button item={item} index={index}/>)
+      }
+      {
+        product && <Button item={product} id="products-modal"/>
+      }
+    </article>
+    <article class="mb-0 flex gap-2">
+      <Facebook/>
+      <Instagram/>
+      <!-- <Twitter/> -->
+    </article>
+  </section>  
+   <Modal/>
+</Layout>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const openModalButton = document.getElementById("products-modal");
+  const modal = document.getElementById("modal");
+  const closeModalButton = document.getElementById("close-modal");
+
+  // Abrir el modal
+  openModalButton?.addEventListener("click", function() {
+    modal?.classList.remove("hidden");
+  });
+
+  // Cerrar el modal
+  closeModalButton?.addEventListener("click", function() {
+    modal?.classList.add("hidden");
+  });
+
+  // Cerrar el modal al hacer clic fuera del contenido
+  modal?.addEventListener("click", function(e) {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+});
+</script>
